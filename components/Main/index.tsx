@@ -1,4 +1,5 @@
-import React from 'react';
+import ChallengeArea from '../ChallengeArea';
+import CycleArea from '../CycleArea';
 import ExperienceBar from '../ExperienceBar';
 import Profile from '../Profile';
 
@@ -9,6 +10,8 @@ const Main: React.FC = () => {
     <Container>
       <ExperienceBar />
       <Profile />
+      <CycleArea />
+      {/* <ChallengeArea /> */}
     </Container>
   );
 };
