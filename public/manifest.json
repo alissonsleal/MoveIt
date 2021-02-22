@@ -1,0 +1,15 @@
+{
+  "short_name": "Move.it",
+  "name": "Move.it - Next Level Week #04",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "background_color": "#F2F3F5",
+  "theme_color": "#5965E0"
+}
