@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import ExperienceBar from '../components/ExperienceBar';
+import Main from '../components/Main';
 import Layout from '../Layout';
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
       </Head>
 
       <Layout>
-        <ExperienceBar />
+        <Main />
       </Layout>
     </div>
   );
