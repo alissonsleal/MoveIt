@@ -8,7 +8,7 @@ export const Container = styled.div`
   span {
     display: flex;
     justify-content: space-between;
-    color: var(--text);
+    color: var(--title);
     font-size: 7.4rem;
     font-family: 'Rajdhani', sans-serif;
 

@@ -8,10 +8,18 @@ import { Container } from './styles';
 const Main: React.FC = () => {
   return (
     <Container>
-      <ExperienceBar />
-      <Profile />
-      <CycleArea />
-      <ChallengeArea />
+      <div className="container">
+        <div className="header">
+          <ExperienceBar />
+        </div>
+        <div className="left">
+          <Profile />
+          <CycleArea />
+        </div>
+        <div className="right">
+          <ChallengeArea />
+        </div>
+      </div>
     </Container>
   );
 };
