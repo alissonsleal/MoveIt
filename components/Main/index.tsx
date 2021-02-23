@@ -11,7 +11,7 @@ const Main: React.FC = () => {
       <ExperienceBar />
       <Profile />
       <CycleArea />
-      {/* <ChallengeArea /> */}
+      <ChallengeArea />
     </Container>
   );
 };

@@ -3,9 +3,14 @@ import React from 'react';
 import { Container } from './styles';
 
 const Timer: React.FC = () => {
+  let time;
   return (
     <Container>
-      <h1>25:00</h1>
+      <span>
+        <h2>2</h2>
+        <h2>5</h2>:<h2>0</h2>
+        <h2>0</h2>
+      </span>
     </Container>
   );
 };

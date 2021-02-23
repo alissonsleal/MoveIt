@@ -13,7 +13,7 @@ const CycleArea: React.FC = () => {
 
   return (
     <Container>
-      <div>
+      <div className="completed-challenges">
         <span>Desafios Completos</span>
         <span>00</span>
       </div>

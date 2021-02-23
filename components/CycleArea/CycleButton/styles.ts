@@ -33,6 +33,10 @@ export const Container = styled.button.attrs((props) => ({
     background-color: var(--blue-dark);
   }
 
+  &:focus {
+    outline: none;
+  }
+
   ${(props) =>
     props.isActive &&
     css`
