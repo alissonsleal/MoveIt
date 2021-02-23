@@ -13,12 +13,12 @@ const CycleButton: React.FC<ButtonProps> = ({ active, ...rest }) => {
     <Container type="button" isActive={active} {...rest}>
       {active ? (
         <strong>
-          Iniciar um ciclo
+          Abandonar ciclo
           <ImCross color={'#666666'} />
         </strong>
       ) : (
         <strong>
-          Abandonar ciclo
+          Iniciar um ciclo
           <FaPlay />
         </strong>
       )}
