@@ -14,6 +14,7 @@ export const Container = styled.main`
 
   .header {
     grid-area: header;
+    width: 100%;
   }
 
   .left {
@@ -25,5 +26,23 @@ export const Container = styled.main`
 
   .right {
     grid-area: right;
+  }
+
+  @media (max-width: 960px) {
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header {
+      max-width: 27.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .left {
+      margin-bottom: 3rem;
+    }
   }
 `;

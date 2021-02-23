@@ -14,6 +14,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    width: 100%;
 
     strong {
       font-weight: 600;
@@ -30,5 +31,9 @@ export const Container = styled.div`
         margin-right: 9px;
       }
     }
+  }
+
+  @media (max-width: 960px) {
+    margin-bottom: 3rem;
   }
 `;
