@@ -1,36 +1,44 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 9rem;
-  width: 24.375rem;
+  display: flex;
+  align-items: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  color: var(--title);
   margin-bottom: 2rem;
 
-  span {
+  div {
+    flex: 1;
     display: flex;
-    justify-content: space-between;
-    color: var(--title);
-    font-size: 7.4rem;
-    font-family: 'Rajdhani', sans-serif;
+    justify-content: space-evenly;
 
-    h2 {
+    div {
       display: flex;
-      justify-self: center;
-      align-self: center;
+      flex: 1;
+      align-items: center;
+      font-size: 8.5rem;
+      border-radius: 5px;
       background-color: var(--white);
-      font-weight: 600;
-      line-height: 10rem;
+      text-align: center;
 
-      &:nth-child(1),
-      &:nth-child(3) {
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
+      span {
+        flex: 1;
       }
 
-      &:nth-child(2),
-      &:nth-child(4) {
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
+      & span:first-child {
+        border-right: 1px solid var(--gray-line);
+      }
+      & span:last-child {
+        border-left: 1px solid var(--gray-line);
       }
     }
+  }
+
+  .colon {
+    display: flex;
+    justify-content: center;
+    font-size: 8rem;
+    margin: 0 0.5rem;
   }
 `;

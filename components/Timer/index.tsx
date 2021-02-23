@@ -2,15 +2,35 @@ import React from 'react';
 
 import { Container } from './styles';
 
-const Timer: React.FC = () => {
-  let time;
+interface TimerProps {
+  minutes: number;
+  seconds: number;
+}
+
+const Timer: React.FC<TimerProps> = ({ minutes, seconds }) => {
+  const [minuteLeft, minuteRight] = minutes
+    .toString()
+    .padStart(2, '0')
+    .split('');
+
+  const [secondsLeft, secondsRight] = seconds
+    .toString()
+    .padStart(2, '0')
+    .split('');
+
   return (
     <Container>
-      <span>
-        <h2>2</h2>
-        <h2>5</h2>:<h2>0</h2>
-        <h2>0</h2>
-      </span>
+      <div>
+        <div className="number-container">
+          <span>{minuteLeft}</span>
+          <span>{minuteRight}</span>
+        </div>
+        <span className="colon">:</span>
+        <div>
+          <span className="number-container">{secondsLeft}</span>
+          <span>{secondsRight}</span>
+        </div>
+      </div>
     </Container>
   );
 };
