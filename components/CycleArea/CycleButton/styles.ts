@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 export interface ButtonProps {
   isActive: boolean;
+  hasFinished: boolean;
 }
 
 export const Container = styled.button.attrs((props) => ({
@@ -38,27 +39,45 @@ export const Container = styled.button.attrs((props) => ({
   }
 
   ${(props) =>
-    props.isActive &&
-    css`
-      background-color: var(--white);
+    props.isActive
+      ? css`
+          background-color: var(--white);
 
-      strong {
-        color: var(--text);
+          strong {
+            color: var(--text);
 
-        svg {
-          fill: var(--text);
-        }
-      }
-
-      &:hover {
-        background-color: var(--red);
-        strong {
-          color: var(--white);
-
-          svg {
-            fill: var(--white);
+            svg {
+              fill: var(--text);
+            }
           }
-        }
-      }
-    `}
+
+          &:hover {
+            background-color: var(--red);
+            strong {
+              color: var(--white);
+
+              svg {
+                fill: var(--white);
+              }
+            }
+          }
+        `
+      : props.hasFinished &&
+        css`
+          background-color: var(--white);
+          border-bottom: 0.25rem solid var(--green);
+
+          strong {
+            color: var(--text);
+
+            svg {
+              fill: var(--green);
+            }
+          }
+
+          &:hover {
+            background-color: var(--white);
+            cursor: not-allowed;
+          }
+        `}
 `;
