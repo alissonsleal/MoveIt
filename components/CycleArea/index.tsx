@@ -1,31 +1,42 @@
+import { count } from 'console';
 import { useEffect, useState } from 'react';
 import Timer from '../Timer';
 import CycleButton from './CycleButton';
 
 import { Container } from './styles';
 
+let countdownTimeout: NodeJS.Timeout;
+
 const CycleArea: React.FC = () => {
-  const [active, setActive] = useState(false);
-  const [time, setTime] = useState(25 * 60);
+  const [isActive, setIsActive] = useState(false);
+  const [time, setTime] = useState(0.05 * 60);
+  const [hasFinished, setHasFinished] = useState(false);
 
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
 
   const handleClick = () => {
-    setActive(!active);
+    if (isActive === true) {
+      clearTimeout(countdownTimeout);
+      setIsActive(false);
+      setTime(25 * 60);
+    } else {
+      setIsActive(true);
+    }
   };
 
   useEffect(() => {
-    if (active && time > 0) {
-      setTimeout(() => {
+    if (isActive && time > 0) {
+      countdownTimeout = setTimeout(() => {
         setTime(time - 1);
       }, 1000);
     }
 
-    if (time === 0) {
-      setActive(false);
+    if (isActive && time === 0) {
+      setIsActive(false);
+      setHasFinished(true);
     }
-  }, [active, time]);
+  }, [isActive, time]);
 
   return (
     <Container>
@@ -35,7 +46,11 @@ const CycleArea: React.FC = () => {
       </div>
       <div className="countdown-area">
         <Timer minutes={minutes} seconds={seconds} />
-        <CycleButton active={active} onClick={handleClick} />
+        <CycleButton
+          active={isActive}
+          hasFinished={hasFinished}
+          onClick={handleClick}
+        />
       </div>
     </Container>
   );
