@@ -1,8 +1,12 @@
+import { useContext } from 'react';
 import { ImArrowUp } from 'react-icons/im';
+import { ChallengesContext } from '../../utils/context/ChallengesContext';
 
 import { Container } from './styles';
 
 const Profile: React.FC = () => {
+  const { level } = useContext(ChallengesContext);
+
   return (
     <Container>
       <img
@@ -15,7 +19,7 @@ const Profile: React.FC = () => {
         <strong>Alisson Leal</strong>
         <p>
           <ImArrowUp color="#4CD62B" size={16} />
-          Level 1
+          Level {level}
         </p>
       </div>
     </Container>

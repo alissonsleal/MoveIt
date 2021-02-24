@@ -1,5 +1,5 @@
-import { count } from 'console';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { ChallengesContext } from '../../utils/context/ChallengesContext';
 import Timer from '../Timer';
 import CycleButton from './CycleButton';
 
@@ -8,9 +8,17 @@ import { Container } from './styles';
 let countdownTimeout: NodeJS.Timeout;
 
 const CycleArea: React.FC = () => {
+  const {
+    startNewChallenge,
+    challengesCompleted,
+    activeChallenge,
+    time,
+    setTime,
+    hasFinished,
+    setHasFinished,
+  } = useContext(ChallengesContext);
+
   const [isActive, setIsActive] = useState(false);
-  const [time, setTime] = useState(0.05 * 60);
-  const [hasFinished, setHasFinished] = useState(false);
 
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
@@ -35,6 +43,7 @@ const CycleArea: React.FC = () => {
     if (isActive && time === 0) {
       setIsActive(false);
       setHasFinished(true);
+      startNewChallenge();
     }
   }, [isActive, time]);
 
@@ -42,7 +51,7 @@ const CycleArea: React.FC = () => {
     <Container>
       <div className="completed-challenges">
         <span>Desafios Completos</span>
-        <span>00</span>
+        <span>{challengesCompleted}</span>
       </div>
       <div className="countdown-area">
         <Timer minutes={minutes} seconds={seconds} />
