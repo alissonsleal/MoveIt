@@ -3,6 +3,7 @@ import {
   Dispatch,
   ReactNode,
   SetStateAction,
+  useEffect,
   useState,
 } from 'react';
 import challenges from '../challenges.json';
@@ -39,10 +40,13 @@ export const ChallengesProvider = ({ children }: ChallengesProviderProps) => {
   const [level, setLevel] = useState(1);
   const [currentExperience, setCurrentExperience] = useState(0);
   const [challengesCompleted, setChallengesCompleted] = useState(0);
-  const [time, setTime] = useState(25 * 60);
+  const [time, setTime] = useState(0.05 * 60);
   const [hasFinished, setHasFinished] = useState(false);
-
   const [activeChallenge, setActiveChallenge] = useState(null as any);
+
+  useEffect(() => {
+    Notification.requestPermission();
+  }, []);
 
   function levelUp() {
     setLevel(level + 1);
@@ -59,11 +63,20 @@ export const ChallengesProvider = ({ children }: ChallengesProviderProps) => {
     setChallengesCompleted(challengesCompleted + 1);
     setCurrentExperience(currentExperience + amount);
     resetChallenge();
+
+    new Audio('/notification.mp3').play();
+
+    if (Notification.permission === 'granted') {
+      new Notification('Novo desafio para você!', {
+        body: `Valendo ${activeChallenge.amount}xp`,
+        image: '/favicon.svg',
+      });
+    }
   }
 
   function resetChallenge() {
     setActiveChallenge(null);
-    setTime(25 * 60);
+    setTime(0.05 * 60);
     setHasFinished(false);
   }
 
@@ -71,6 +84,7 @@ export const ChallengesProvider = ({ children }: ChallengesProviderProps) => {
 
   if (currentExperience >= experienceToNextLevel) {
     levelUp();
+    setCurrentExperience(currentExperience - experienceToNextLevel);
   }
 
   return (
