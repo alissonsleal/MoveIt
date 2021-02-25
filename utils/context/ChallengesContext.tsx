@@ -40,7 +40,7 @@ export const ChallengesProvider = ({ children }: ChallengesProviderProps) => {
   const [level, setLevel] = useState(1);
   const [currentExperience, setCurrentExperience] = useState(0);
   const [challengesCompleted, setChallengesCompleted] = useState(0);
-  const [time, setTime] = useState(0.05 * 60);
+  const [time, setTime] = useState(25 * 60);
   const [hasFinished, setHasFinished] = useState(false);
   const [activeChallenge, setActiveChallenge] = useState(null as any);
 
@@ -76,7 +76,7 @@ export const ChallengesProvider = ({ children }: ChallengesProviderProps) => {
 
   function resetChallenge() {
     setActiveChallenge(null);
-    setTime(0.05 * 60);
+    setTime(25 * 60);
     setHasFinished(false);
   }
 
