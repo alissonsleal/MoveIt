@@ -6,6 +6,7 @@ import {
   useEffect,
   useState,
 } from 'react';
+import LevelUpModal from '../../components/LevelUpModal';
 import challenges from '../challenges.json';
 
 interface ChallengesProviderProps {
@@ -32,6 +33,7 @@ interface ChallengesData {
   hasFinished: boolean;
   setHasFinished: Dispatch<SetStateAction<boolean>>;
   experienceToNextLevel: number;
+  setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export const ChallengesContext = createContext({} as ChallengesData);
@@ -43,6 +45,7 @@ export const ChallengesProvider = ({ children }: ChallengesProviderProps) => {
   const [time, setTime] = useState(0.05 * 60);
   const [hasFinished, setHasFinished] = useState(false);
   const [activeChallenge, setActiveChallenge] = useState(null as any);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     Notification.requestPermission();
@@ -72,6 +75,7 @@ export const ChallengesProvider = ({ children }: ChallengesProviderProps) => {
 
   function levelUp() {
     setLevel(level + 1);
+    setIsModalOpen(true);
   }
 
   function startNewChallenge() {
@@ -125,9 +129,11 @@ export const ChallengesProvider = ({ children }: ChallengesProviderProps) => {
         hasFinished,
         setHasFinished,
         experienceToNextLevel,
+        setIsModalOpen,
       }}
     >
       {children}
+      {isModalOpen && <LevelUpModal />}
     </ChallengesContext.Provider>
   );
 };
